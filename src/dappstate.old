@@ -1,0 +1,68 @@
+import React from 'react';
+import constate from 'constate';
+import { TempleWallet } from '@temple-wallet/dapp';
+
+export const [
+  DAppProvider,
+  useWallet,
+  useTezos,
+  useAccountPkh,
+  useReady,
+  useConnect,
+] = constate(
+  useDApp,
+  (v : any) => v.wallet,
+  (v : any) => v.tezos,
+  (v : any) => v.accountPkh,
+  (v : any) => v.ready,
+  (v : any) => v.connect
+);
+
+function useDApp({ appName } : any) {
+  const [{ wallet, tezos, accountPkh }, setState] = React.useState(() : any => ({
+    wallet: null,
+    tezos: null,
+    accountPkh: null,
+  }));
+
+  const ready = Boolean(tezos);
+
+  React.useEffect(() => {
+    return TempleWallet.onAvailabilityChange((available : any) => {
+      setState({
+        wallet: available ? new TempleWallet(appName) : null,
+        tezos: null,
+        accountPkh: null,
+      });
+    });
+  }, [setState, appName]);
+
+  const connect = React.useCallback(
+    async (network : any, opts : any) => {
+      try {
+        if (!wallet) {
+          throw new Error('Temple Wallet not available');
+        }
+        await wallet.connect(network, opts);
+        const tzs = wallet.toTezos();
+        const pkh = await tzs.wallet.pkh();
+        setState({
+          wallet,
+          tezos: tzs,
+          accountPkh: pkh,
+        });
+      } catch (err : any) {
+        alert(`Failed to connect to Temple Wallet: ${err.message}`);
+      }
+    },
+    [setState, wallet]
+  );
+
+  return {
+    wallet,
+    tezos,
+    accountPkh,
+    ready,
+    connect,
+  };
+}
