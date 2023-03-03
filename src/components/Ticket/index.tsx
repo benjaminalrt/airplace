@@ -11,7 +11,7 @@ interface TicketProps {
 
 export default function TicketCard({ ticket, sell = false }: TicketProps) {
 
-  const flight : Flight = flights.find(f => f.id == ticket.flightId)
+  const flight : Flight|undefined = flights.find(f => f.id == ticket.flightId)
   const walletAddress = useWalletAddress();
 
   // FIXME
@@ -21,7 +21,7 @@ export default function TicketCard({ ticket, sell = false }: TicketProps) {
         <img className='object-cover' src={`https://benjami.fr/assets/${flight.city}.png`} alt="" />
       </div>
       <div className="flex flex-col gap-2 items-center">
-        <p>To {flight.destination}</p>
+        <p>To {flight?.destination}</p>
         <p className={`font-bold ${ticket.onSale ? 'text-green-400' : 'text-red-400'}`}>{ticket.onSale ? 'ON SALE' : 'NOT ON SALE'}{sell && ticket.walletAddress == walletAddress ? ' - YOURS' : ''}</p>
         {sell ?
           <Link className='font-bold hover:underline' href={`/nft-tickets/${ticket.nftId}`}>Show details</Link>
