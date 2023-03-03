@@ -17,7 +17,7 @@ export default function Home() {
       <div className='container flex flex-col gap-4 mx-auto py-8'>
         <h1 className='text-2xl'>Dev Airplace - All tickets</h1>
 
-        <div className="grid grid-cols-3 gap-8">
+        <div className="flex flex-col gap-4">
           {flights.map((flight, key) => {
             return (
               <div key={key}>

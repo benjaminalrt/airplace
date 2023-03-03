@@ -45,13 +45,10 @@ export default function TicketPage({ myTicket }: TicketPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='container flex flex-col gap-4 mx-auto py-8'>
-        <div className="flex justify-between">
-          <h1 className='text-2xl'>Dev Airplace - Flight to {flight?.destination} - <span className={`font-bold ${ticket.onSale ? 'text-green-400' : 'text-red-400'}`}>{ticket.onSale ? 'on sale' : 'not on sale'}</span></h1>
+      <div className='container flex flex-col items-center gap-4 mx-auto py-8'>
+          <h1 className='text-2xl text-center'>Dev Airplace - Flight to {flight?.destination} - <span className={`font-bold ${ticket.onSale ? 'text-green-400' : 'text-red-400'}`}>{ticket.onSale ? 'on sale' : 'not on sale'}</span></h1>
           
-        </div>
-
-        <div className="flex gap-8">
+        <div className="flex flex-col gap-4 items-center">
           <div className="w-48 h-48">
             <img className='object-cover' src={`https://benjami.fr/assets/${flight?.city}.png`} alt="" />
           </div>

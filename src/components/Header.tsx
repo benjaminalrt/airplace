@@ -11,13 +11,17 @@ export default function Header(){
   const isConnected = useIsConnected();
 
   return (
-    <div className='flex flex-col gap-1 items-end'>
-      <div className="flex items-center gap-4">
+    <div className='flex flex-col gap-1 items-center'>
+      <div className="flex flex-col gap-1 items-center">
         <Link className='hover:underline' href={"/"}>Air France tickets</Link>
         <Link className='hover:underline' href={"/nft-tickets"}>Nft tickets</Link>
         {isConnected() &&
+          
             <Link className='hover:underline' href={"/my-tickets"}>My tickets</Link>
         }
+        <div className='mt-3'>
+
+        </div>
         <WalletButton />
       </div>
       {isConnected() &&

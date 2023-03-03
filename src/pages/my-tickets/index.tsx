@@ -74,11 +74,11 @@ export default function MyTickets({tickets}: MyTicketsProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='container flex flex-col gap-8 mx-auto py-8'>
+      <div className='container flex flex-col items-center gap-8 mx-auto py-8'>
         <h1 className='text-2xl'>Dev Airplace - My NFT tickets</h1>
 
         {(loaded && isConnected()) && 
-          <div className="flex flex-wrap gap-16">
+          <div className="flex flex-col gap-4">
             {userTickets.length ? userTickets.map((ticket, key) => {
               return (
                 <div key={key}>

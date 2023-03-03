@@ -52,10 +52,10 @@ export default function MyTickets({tickets}: NftTicketsProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='container flex flex-col gap-8 mx-auto py-8'>
-        <h1 className='text-2xl'>Dev Airplace - NFT tickets marketplace</h1>
+      <div className='container flex flex-col items-center gap-8 mx-auto py-8'>
+        <h1 className='text-2xl text-center'>Dev Airplace - NFT tickets marketplace</h1>
 
-        <div className="flex flex-wrap gap-16">
+        <div className="flex flex-col gap-4">
         {tickets.length ? tickets.map((ticket : any, key : any) => {
             return (
             <div key={key}>

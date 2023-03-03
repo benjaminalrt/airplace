@@ -65,16 +65,14 @@ export default function NftTicketPage({ nftTicket }: NftTicketPage) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='container flex flex-col gap-4 mx-auto py-8'>
-        <div className="flex justify-between">
-          <h1 className='text-2xl'>Dev Airplace - Flight to {flight?.destination}</h1>
-        </div>
+      <div className='container flex flex-col items-center gap-4 mx-auto py-8'>
+          <h1 className='text-2xl text-center'>Dev Airplace - Flight to {flight?.destination}</h1>
 
-        <div className="flex gap-8">
+        <div className="flex flex-col items-center gap-4">
           <div className="w-48 h-48">
             <img className='object-cover' src={`https://benjami.fr/assets/${flight?.city}.png`} alt="" />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center">
             <h1 className="font-bold text-2xl">This ticket is {ticket.onSale ? 'on sale' : 'not on sale'} - {flight?.price} USD</h1>
 
             {isConnected() && 
@@ -95,8 +93,8 @@ export default function NftTicketPage({ nftTicket }: NftTicketPage) {
                         <input className="form-input rounded" {...register("lastName")} />
                       </div>
         
-                      <div className="flex justify-end">
-                        <input type="submit" value={"Get my ticket"} className="cursor-pointer hover:underline" />
+                      <div className="flex justify-center">
+                        <input type="submit" value={"Get my ticket"} className="bg-blue-300 rounded-lg px-5 py-2 cursor-pointer hover:underline" />
                       </div>
                     </form>
                   </div>
@@ -112,7 +110,7 @@ export default function NftTicketPage({ nftTicket }: NftTicketPage) {
                 <WalletButton disconnectedContent={"Connect your wallet to purchase"} />
               </div>
             }
-            <div className="mt-auto">
+            <div className="mt-4">
               <Link href={'/nft-tickets'} className="bg-gray-200 hover:bg-white border rounded-lg px-3 py-2">Back</Link>
             </div>
           </div>

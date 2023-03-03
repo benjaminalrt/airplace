@@ -94,7 +94,7 @@ export default function FlightDetails({ flight }: FlightProps) {
           <Link href={'/'} className="bg-gray-200 hover:bg-white border rounded-lg px-3 py-2">Back</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="flex flex-col gap-8">
           <FlightCard detailPage={true} flight={flight} />
           <div className="flex flex-col gap-3">
             <h2 className="text-xl">Fill the form to claim your ticket</h2>
@@ -111,8 +111,8 @@ export default function FlightDetails({ flight }: FlightProps) {
                 <input className="form-input rounded" {...register("lastName")} />
               </div>
 
-              <div className="flex justify-end">
-                <input type="submit" value={"Get my ticket"} className="cursor-pointer hover:underline" />
+              <div className="flex justify-center">
+                <input type="submit" value={"Get my ticket"} className="bg-blue-300 rounded-lg px-5 py-2 cursor-pointer hover:underline" />
               </div>
             </form>
           </div>

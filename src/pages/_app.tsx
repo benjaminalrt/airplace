@@ -17,12 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
           <BeaconProvider>
             <ContractProvider>
               <div className="bg-white min-h-screen flex flex-col">
-                <div className="flex items-center h-20 bg-gray-200 shadow-lg">
-                  <div className="container mx-auto flex items-center justify-between">
-                    <h1>Airplace</h1>
-                    <div className="flex items-center gap-8">
-                      <Header />
-                    </div>
+                <div className="flex items-center flex-col gap-2   items-center bg-gray-200 shadow-lg">
+                  <div className="flex items-center gap-8">
+                    <Header />
                   </div>
                 </div>
                 <Component {...pageProps} />
