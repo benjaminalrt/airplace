@@ -598,7 +598,8 @@
     "eslint-visitor-keys" "^3.3.0"
 
 "@vespaiach/axios-fetch-adapter@github:ecadlabs/axios-fetch-adapter":
-  "resolved" "git+ssh://git@github.com/ecadlabs/axios-fetch-adapter.git#05cf8ba547aae387933939850231e8abaf323efe"
+  "integrity" "sha512-jeknxlKfq55yInt+F14Saw/Z3yC6vaY5L+QoyWn+dI0fY9kAV4zKE7f+tFcW9H9+9Bu1M0hIgzTXdYheYolH6A=="
+  "resolved" "git+ssh://git@github.com/ecadlabs/axios-fetch-adapter.git"
   "version" "0.3.1"
 
 "@wry/context@^0.7.0":
