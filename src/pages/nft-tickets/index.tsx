@@ -4,7 +4,6 @@ import { Inter } from '@next/font/google';
 
 import type { Flight } from '@/types';
 import client from '@/apolloClient';
-import { getAllFlightsQuery } from '@/apollo/queries/getAllFlights';
 import FlightCard from '@/components/Flight';
 import { useEffect, useState } from 'react';
 import { useContract } from '@/contexts/Contract';
@@ -57,7 +56,7 @@ export default function MyTickets({tickets}: NftTicketsProps) {
         <h1 className='text-2xl'>Dev Airplace - NFT tickets marketplace</h1>
 
         <div className="flex flex-wrap gap-16">
-        {tickets.length ? tickets.map((ticket, key) => {
+        {tickets.length ? tickets.map((ticket : any, key : any) => {
             return (
             <div key={key}>
                 <TicketCard sell={true} ticket={ticket} />

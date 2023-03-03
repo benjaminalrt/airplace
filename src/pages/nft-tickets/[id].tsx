@@ -37,13 +37,13 @@ export default function NftTicketPage({ nftTicket }: NftTicketPage) {
   const walletAddress = useWalletAddress();
   const contract = useContract();
   const isConnected = useIsConnected();
-  const flight : Flight = flights.find(f => f.id == ticket.flightId) 
+  const flight : Flight|undefined = flights.find(f => f.id == ticket.flightId) 
   const router = useRouter();
 
   const buy = async () => {
     try {
       const nftId = ticket.nftId;
-      const adr = new Address(walletAddress)
+      const adr = new Address(walletAddress ? walletAddress : "")
       const owner = new Address(ticket.walletAddress)
       const transferDest = new transfer_destination(adr, new Nat(nftId), new Nat(2));
       const transferParam = new transfer_param(owner, [transferDest]);
@@ -67,15 +67,15 @@ export default function NftTicketPage({ nftTicket }: NftTicketPage) {
 
       <div className='container flex flex-col gap-4 mx-auto py-8'>
         <div className="flex justify-between">
-          <h1 className='text-2xl'>Dev Airplace - Flight to {flight.destination}</h1>
+          <h1 className='text-2xl'>Dev Airplace - Flight to {flight?.destination}</h1>
         </div>
 
         <div className="flex gap-8">
           <div className="w-48 h-48">
-            <img className='object-cover' src={`https://benjami.fr/assets/${flight.city}.png`} alt="" />
+            <img className='object-cover' src={`https://benjami.fr/assets/${flight?.city}.png`} alt="" />
           </div>
           <div className="flex flex-col">
-            <h1 className="font-bold text-2xl">This ticket is {ticket.onSale ? 'on sale' : 'not on sale'} - {flight.price} USD</h1>
+            <h1 className="font-bold text-2xl">This ticket is {ticket.onSale ? 'on sale' : 'not on sale'} - {flight?.price} USD</h1>
 
             {isConnected() && 
               <>

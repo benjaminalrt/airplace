@@ -24,7 +24,7 @@ export default function TicketPage({ myTicket }: TicketPageProps) {
 
   
   const [ticket, setTicket] = useState(myTicket)
-  const flight : Flight = flights.find(f => f.id == ticket.flightId) 
+  const flight : Flight|undefined = flights.find(f => f.id == ticket.flightId) 
 
   const sell = async () => {
     await sellTicket(ticket.nftId, {onSale : true});
@@ -47,13 +47,13 @@ export default function TicketPage({ myTicket }: TicketPageProps) {
 
       <div className='container flex flex-col gap-4 mx-auto py-8'>
         <div className="flex justify-between">
-          <h1 className='text-2xl'>Dev Airplace - Flight to {flight.destination} - <span className={`font-bold ${ticket.onSale ? 'text-green-400' : 'text-red-400'}`}>{ticket.onSale ? 'on sale' : 'not on sale'}</span></h1>
+          <h1 className='text-2xl'>Dev Airplace - Flight to {flight?.destination} - <span className={`font-bold ${ticket.onSale ? 'text-green-400' : 'text-red-400'}`}>{ticket.onSale ? 'on sale' : 'not on sale'}</span></h1>
           
         </div>
 
         <div className="flex gap-8">
           <div className="w-48 h-48">
-            <img className='object-cover' src={`https://benjami.fr/assets/${flight.city}.png`} alt="" />
+            <img className='object-cover' src={`https://benjami.fr/assets/${flight?.city}.png`} alt="" />
           </div>
           <div className="flex flex-col justify-end items-end">
             <div className="flex items-end gap-2">

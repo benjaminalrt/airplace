@@ -1,6 +1,5 @@
 import { TezosToolkit } from '@taquito/taquito';
 import { useState } from 'react';
-import { importKey } from '@taquito/signer';
 
 import constate from 'constate';
 import { useEndpoint } from './Settings';
@@ -12,9 +11,9 @@ export const [
   () => {
     const endpoint = useEndpoint()
     const [taquito] = useState(() : { tezos : TezosToolkit } => ({
-      ttk: new TezosToolkit(endpoint),
+      tezos: new TezosToolkit(endpoint),
     }));
     return taquito;
   },
-  (v) => v.ttk,
+  (v) => v.tezos,
 );

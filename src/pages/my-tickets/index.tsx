@@ -3,8 +3,6 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 
 import type { Flight } from '@/types';
-import client from '@/apolloClient';
-import { getAllFlightsQuery } from '@/apollo/queries/getAllFlights';
 import FlightCard from '@/components/Flight';
 import { useEffect, useState } from 'react';
 import { useContract } from '@/contexts/Contract';
@@ -47,8 +45,8 @@ export default function MyTickets({tickets}: MyTicketsProps) {
     const getKeys = async () => {
       const storage = await get_storage(contractAddress)
       const ledger = storage.ledger;
-      const datas = await ledger.getMultipleValues(tickets.map(t => t.nftId))
-      const goodDatas = tickets.filter(t => {
+      const datas = await ledger.getMultipleValues(tickets.map((t:any) => t.nftId))
+      const goodDatas = tickets.filter((t:any) => {
         let nId = `${t.nftId}`
         return datas.valueMap.has(nId) && (datas.valueMap.get(nId) == walletAddress)
       })
@@ -84,7 +82,7 @@ export default function MyTickets({tickets}: MyTicketsProps) {
             {userTickets.length ? userTickets.map((ticket, key) => {
               return (
                 <div key={key}>
-                  <TicketCard ticket={ticket} />
+                  <TicketCard sell={false} ticket={ticket} />
                 </ div>
               )
             }) :

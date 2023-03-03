@@ -18,7 +18,7 @@ export default function TicketCard({ ticket, sell = false }: TicketProps) {
   return (
     <div className='flex flex-col gap-4 items-center'>
       <div className="w-48 h-48">
-        <img className='object-cover' src={`https://benjami.fr/assets/${flight.city}.png`} alt="" />
+        <img className='object-cover' src={`https://benjami.fr/assets/${flight?.city}.png`} alt="" />
       </div>
       <div className="flex flex-col gap-2 items-center">
         <p>To {flight?.destination}</p>
